@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AddressBook
 {
-    class Program:Contacts
+    class Program
     {
         public static void Main(string[] args)
         {
@@ -22,6 +22,11 @@ namespace AddressBook
                     Contacts create = new Contacts();
                     create.CreateContact();
                
+                    break;
+                case 2:
+                    Contacts adding=new Contacts();
+                    adding.AddingContact();
+          
                     break;
                 default:
                     Console.WriteLine("ENTER A CORRECT OPTION");
