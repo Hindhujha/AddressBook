@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AddressBook
 {
-    public class Contacts
+    public class Contacts:Person
     {
         public List<Person> People = new List<Person>();
 
@@ -65,9 +65,9 @@ namespace AddressBook
         }
 
 
-       
+
         //ADDING NEW CONTACT
-     
+
         public void AddingContact()
         {
             Person person = new Person();
@@ -83,12 +83,51 @@ namespace AddressBook
             Console.WriteLine("NEW CONTACT ADDED");
             Contacts show = new Contacts();
             show.Display(person);
-            }
-
-           
-
         }
 
+        //EDIT CONTACT
+        public void EditContact()
+        {
+
+            Contacts create = new Contacts();
+           
+            create.AddingContact();
+            Console.WriteLine("ENTER A NAME TO EDIT CONTACT");
+            string name = Console.ReadLine();
+            //Person person = new Person();
+            if (FirstName == name)
+            {
+                Console.WriteLine("ENTER A DETAIL TO EDIT:1.City 2.State 3.Zip");
+                int select = Convert.ToInt32(Console.ReadLine());
+
+                switch (select)
+                {
+                    case 1:
+                        Console.WriteLine("ENTER A CITY NAME");
+                        string city = Console.ReadLine();
+                        City = city;
+                        break;
+                    case 2:
+                        Console.WriteLine("ENTER A STATE NAME");
+                        string state = Console.ReadLine();
+                        State = state;
+                        break;
+                    case 3:
+                        Console.WriteLine("ENTER A STATE NAME");
+                        int zip = Convert.ToInt32(Console.ReadLine());
+                        Zip = zip;
+                        break;
+                    default:
+                        Console.WriteLine("ENTER CORRECT OPTION");
+                        break;
+
+                }
+                Contacts edited = new Contacts();
+              
+                edited.AddingContact();
+            }
+        }
+    }
         //Declaring datatype for Person
         public class Person
         {
