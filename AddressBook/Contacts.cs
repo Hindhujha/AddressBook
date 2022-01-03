@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace AddressBook
 {
-    public class Contacts:Person
+    public class Contacts : Person
     {
-        public List<Person> People = new List<Person>();
-
 
         //Creating A Contact by get the input from USER
         public void CreateContact()
@@ -90,7 +88,7 @@ namespace AddressBook
         {
 
             Contacts create = new Contacts();
-           
+
             create.AddingContact();
             Console.WriteLine("ENTER A NAME TO EDIT CONTACT");
             string name = Console.ReadLine();
@@ -123,9 +121,104 @@ namespace AddressBook
 
                 }
                 Contacts edited = new Contacts();
-              
+
                 edited.AddingContact();
             }
+        }
+
+
+
+
+        //CONTACTS IN ADDRESS BOOK 
+        public static List<Person> People = new List<Person>();
+
+        public void Add(Person person)
+        {
+            People.Add(person);
+        }
+
+        public void AddressBook()
+        {
+            Contacts create = new Contacts();
+            create.Add(new Person()
+            { 
+                FirstName = "REENA",
+                LastName = "THOMAS",
+                Address = "SK NAGAR",
+                City = "SALEM",
+                State = "TAMILNADU",
+                Zip = 636402,
+                PhoneNumber = 9992345613,
+                email = "reena@gmail.com"
+
+            });
+            create.Add(new Person()
+            {
+                FirstName = "SITA",
+                LastName = "DANIEL",
+                Address = "PO NAGAR",
+                City = "BANGALORE",
+                State = "KARNATAKA",
+                Zip = 636700,
+                PhoneNumber = 9992345983,
+                email = "sitadanie@gmail.com"
+
+            });
+            create.Add(new Person()
+            {
+                FirstName = "RAM",
+                LastName = "KUMAR",
+                Address = "AK NAGAR",
+                City = "CHENNAI",
+                State = "TAMILNADU",
+                Zip = 632007,
+                PhoneNumber = 9992345603,
+                email = "ram1234@gmail.com"
+            });
+        }
+
+        //REMOVE CONTACT
+        public void RemoveContact()
+        {
+            Console.WriteLine("CONTACTS IN ADDRESS BOOK ARE :");
+            Contacts show = new Contacts();
+            show.AddressBook();
+            foreach (var person in People)
+            {
+                show.Display(person);
+            }
+   
+            Console.WriteLine("ENTER A PERSON FIRST NAME TO REMOVE FROM YOUR ADDRESS BOOK");
+            string remove = Console.ReadLine();
+            if(remove == "REENA")
+            {
+                Console.WriteLine("AFTER REMOVING REENA ,THE CONTACTS IN ADDRESS BOOK ARE: ");
+                People.RemoveAt(0);
+                foreach (var person in People)
+                {
+                    show.Display(person);
+                }
+            }
+            else if(remove == "SITA")
+            {
+                Console.WriteLine("***************************************");
+                Console.WriteLine("AFTER REMOVING SITA ,THE CONTACTS IN ADDRESS BOOK ARE: ");
+                People.RemoveAt(1);
+                foreach (var person in People)
+                {
+                    show.Display(person);
+                }
+            }
+            else if( remove== "RAM")
+            {
+                Console.WriteLine("AFTER REMOVING RAM ,THE CONTACTS IN ADDRESS BOOK ARE: ");
+                People.RemoveAt(2);
+                foreach (var person in People)
+                {
+                    show.Display(person);
+                }
+            }
+           
         }
     }
         //Declaring datatype for Person
@@ -141,5 +234,7 @@ namespace AddressBook
             public long PhoneNumber { get; set; }
             public string email { get; set; }
         }
-    }
+
+}
+
 
