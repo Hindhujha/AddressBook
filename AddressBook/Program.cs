@@ -16,6 +16,7 @@ namespace AddressBook
                 Console.WriteLine("3.EDITING A CONTACT");
                 Console.WriteLine("4.REMOVE A CONTACT IN ADDRESS BOOK");
                 Console.WriteLine("5.MULTIPLE CONTACTS IN ADDRESS BOOK");
+                Console.WriteLine("6.MULTIPLE  ADDRESS BOOKS");
                 Console.WriteLine("ENTER YOUR OPTION");
 
                 int select = Convert.ToInt32(Console.ReadLine());
@@ -42,6 +43,10 @@ namespace AddressBook
                     case 5:
                         Contacts multiple_contacts = new Contacts();
                         multiple_contacts.Multiple_Contacts();                   
+                        break;
+                    case 6:
+                        Contacts multiple_addressbook = new Contacts();
+                        multiple_addressbook.Multiple_Address();
                         break;
                     default:
                         Console.WriteLine("ENTER A CORRECT OPTION");

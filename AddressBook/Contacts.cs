@@ -297,8 +297,22 @@ namespace AddressBook
             {
                 multiple_contacts.Display(person);
             }
-           
+        }
 
+        //MULTIPLE ADDRESS BOOK
+        public void Multiple_Address()
+        {
+            //DICTIONARY  FOR ADDRESS BOOK1
+            Dictionary<int, string> AddressBooks = new Dictionary<int, string>();
+            AddressBooks.Add(1000, "First-AddressBook");
+            AddressBooks.Add(1001, "Second-AddressBook");
+            AddressBooks.Add(1002, "Third-AddressBook");
+            
+            foreach (KeyValuePair<int, string> element in AddressBooks)
+            {
+                Console.WriteLine("UNIQUE ID:{0} AND ADDRESS BOOK:{1}", element.Key, element.Value);
+
+            }
         }
 
     }
