@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace AddressBook
 {
-    public class Contacts : Person
+    public class Contacts:Person
     {
+  
+
 
         //Creating A Contact by get the input from USER
         public void CreateContact()
@@ -87,13 +89,59 @@ namespace AddressBook
         public void EditContact()
         {
 
-            Contacts create = new Contacts();
 
-            create.AddingContact();
-            Console.WriteLine("ENTER A NAME TO EDIT CONTACT");
+            Console.WriteLine("CONTACTS IN ADDRESS BOOK ARE :");
+            Contacts show = new Contacts();
+            show.AddressBook();
+      
+            foreach (var person in People)
+            {
+                show.Display(person);
+            }
+            Console.WriteLine("ENTER A PERSONS FIRST NAME TO EDIT THE DETAILS");
             string name = Console.ReadLine();
-            //Person person = new Person();
-            if (FirstName == name)
+            Person person1 = new Person();
+            if (name == "REENA")
+            {
+                Console.WriteLine("ENTER A DETAIL TO EDIT:1.City 2.State 3.Zip");
+                int select = Convert.ToInt32(Console.ReadLine());
+                
+                switch (select)
+                {
+                          
+                    case 1:
+                      
+                        Console.WriteLine("ENTER A CITY NAME");
+                        string city = Console.ReadLine();
+                        person1.City = city;
+                       
+                        break;
+                    case 2:
+                   
+                        Console.WriteLine("ENTER A STATE NAME");
+                        string state = Console.ReadLine();
+                        person1. State = state;
+                        break;
+                    case 3:
+                        Console.WriteLine("ENTER A STATE NAME");
+                        int zip = Convert.ToInt32(Console.ReadLine());
+                        person1.Zip = zip;
+                        break;
+                    default:
+                        Console.WriteLine("ENTER CORRECT OPTION");
+                        break;
+
+                }
+                Console.WriteLine("AFTER EDITING CONTACTS IN ADDRESS BOOK");
+                foreach (var person in People)
+                {
+                  
+                    Contacts book = new Contacts();
+                    book.AddressBook();
+                    show.Display(person);
+                }
+            }
+            else if (name == "SITA")
             {
                 Console.WriteLine("ENTER A DETAIL TO EDIT:1.City 2.State 3.Zip");
                 int select = Convert.ToInt32(Console.ReadLine());
@@ -103,31 +151,29 @@ namespace AddressBook
                     case 1:
                         Console.WriteLine("ENTER A CITY NAME");
                         string city = Console.ReadLine();
-                        City = city;
+                        person1.City = city;
                         break;
                     case 2:
                         Console.WriteLine("ENTER A STATE NAME");
                         string state = Console.ReadLine();
-                        State = state;
+                        person1.State = state;
                         break;
                     case 3:
                         Console.WriteLine("ENTER A STATE NAME");
                         int zip = Convert.ToInt32(Console.ReadLine());
-                        Zip = zip;
+                        person1.Zip = zip;
                         break;
                     default:
                         Console.WriteLine("ENTER CORRECT OPTION");
                         break;
-
                 }
-                Contacts edited = new Contacts();
-
-                edited.AddingContact();
+                Console.WriteLine("AFTER EDITING CONTACTS IN ADDRESS BOOK");
+                foreach (var person in People)
+                {
+                    show.Display(person);
+                }
             }
         }
-
-
-
 
         //CONTACTS IN ADDRESS BOOK 
         public static List<Person> People = new List<Person>();
@@ -141,7 +187,7 @@ namespace AddressBook
         {
             Contacts create = new Contacts();
             create.Add(new Person()
-            { 
+            {
                 FirstName = "REENA",
                 LastName = "THOMAS",
                 Address = "SK NAGAR",
@@ -175,9 +221,30 @@ namespace AddressBook
                 PhoneNumber = 9992345603,
                 email = "ram1234@gmail.com"
             });
+            create.Add(new Person()
+            {
+                FirstName = "RAVI",
+                LastName = "KUMAR",
+                Address = "PLM NAGAR",
+                City = "MYSORE",
+                State = "KARANATAKA",
+                Zip = 639807,
+                PhoneNumber = 9992348903,
+                email = "ravi1234@gmail.com"
+            });
+            create.Add(new Person()
+            {
+                FirstName = "ANNIE",
+                LastName = "WILSON",
+                Address = "VKP AREA",
+                City = "CHENNAI",
+                State = "TAMILNADU",
+                Zip = 600807,
+                PhoneNumber = 9992348123,
+                email = "annie89@gmail.com"
+            });
         }
-
-        //REMOVE CONTACT
+        //REMOVING A PERSON IN CONTACT
         public void RemoveContact()
         {
             Console.WriteLine("CONTACTS IN ADDRESS BOOK ARE :");
@@ -187,10 +254,10 @@ namespace AddressBook
             {
                 show.Display(person);
             }
-   
+
             Console.WriteLine("ENTER A PERSON FIRST NAME TO REMOVE FROM YOUR ADDRESS BOOK");
             string remove = Console.ReadLine();
-            if(remove == "REENA")
+            if (remove == "REENA")
             {
                 Console.WriteLine("AFTER REMOVING REENA ,THE CONTACTS IN ADDRESS BOOK ARE: ");
                 People.RemoveAt(0);
@@ -199,7 +266,7 @@ namespace AddressBook
                     show.Display(person);
                 }
             }
-            else if(remove == "SITA")
+            else if (remove == "SITA")
             {
                 Console.WriteLine("***************************************");
                 Console.WriteLine("AFTER REMOVING SITA ,THE CONTACTS IN ADDRESS BOOK ARE: ");
@@ -209,7 +276,7 @@ namespace AddressBook
                     show.Display(person);
                 }
             }
-            else if( remove== "RAM")
+            else if (remove == "RAM")
             {
                 Console.WriteLine("AFTER REMOVING RAM ,THE CONTACTS IN ADDRESS BOOK ARE: ");
                 People.RemoveAt(2);
@@ -218,12 +285,27 @@ namespace AddressBook
                     show.Display(person);
                 }
             }
-           
+
         }
-    }
-        //Declaring datatype for Person
-        public class Person
+        //MULTIPLE PERSONS
+        public void Multiple_Contacts()
         {
+            Console.WriteLine("MULTIPLE CONTACTS IN ADDRESS BOOK ARE:");
+            Contacts multiple_contacts = new Contacts();
+            multiple_contacts.AddressBook();
+            foreach (var person in People)
+            {
+                multiple_contacts.Display(person);
+            }
+           
+
+        }
+
+    }
+
+    //Declaring datatype for Person
+    public class Person
+    {
             public string FirstName { get; set; }
             public string LastName { get; set; }
             public string Address { get; set; }
@@ -233,8 +315,8 @@ namespace AddressBook
             public int Zip { get; set; }
             public long PhoneNumber { get; set; }
             public string email { get; set; }
-        }
-
+   
+    } 
 }
 
 
